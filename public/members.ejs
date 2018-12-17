@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Member Information</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script>
+            function Edit(id) {
+                window.location.href = "/memberEdit?id=" + id;
+            }
+            function Delete(id) {
+                var rs = confirm('Confirm to delete?');
+                if (rs) {
+                    window.location.href = "/memberDelete?id=" + id;
+                }
+            }
+        </script>
+  </head>
+  <body>
+    <h1>Member - List</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>gender</th>
+            <th>birthday</th>
+        </tr>
+        <% for ( var i = 0 ; i < data.length ; i++){ %>
+            <tr>
+                <td>
+                    <%= data[i].ID  %>
+                </td>
+                <td>
+                    <%= data[i].Name  %>
+                </td>
+                <td>
+                    <%= data[i].Gender  %>
+                </td>
+                <td>
+                    <%= data[i].Birthday  %>
+                </td>
+                <td>
+                　　<input type="button" name="edit" value="Edit" onclick="Edit('<%= data[i].ID  %>');" />
+                    <input type="button" name="delete" value="Delete" onclick="Delete('<%= data[i].ID  %>');" />
+                </td>
+            </tr>
+        <% } %>
+        <input type='submit' value='Add' onclick="javascript: location.href='add'">
+
+    </table>
+
+    <div><a href="/logout">logout</a></div>
+
+
+  </body>
+</html>
+                                                      
